@@ -1,0 +1,4 @@
+[submodule "facecompressor"]
+	path = facecompressor
+	url = git@github.com:abel-bernabeu/facecompressor.git
+	branch = master
