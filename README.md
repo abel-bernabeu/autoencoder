@@ -11,4 +11,4 @@ The aim of this project is to experiment with deep learning autoencoders for dif
 
 This project contains git submodules, so in order to download the source you need to clone with the "--recursive" switch:
 
-git clone  git@github.com:abel-bernabeu/autoencoder.git --recursive
+```git clone  git@github.com:abel-bernabeu/autoencoder.git --recursive```
