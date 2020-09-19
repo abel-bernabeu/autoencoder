@@ -2,3 +2,6 @@
 	path = facecompressor
 	url = git@github.com:abel-bernabeu/facecompressor.git
 	branch = master
+[submodule "srgan"]
+	path = srgan
+	url = https://github.com/calebemonteiro/AIDL_Project
