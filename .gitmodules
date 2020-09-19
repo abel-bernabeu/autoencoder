@@ -4,4 +4,4 @@
 	branch = master
 [submodule "srgan"]
 	path = srgan
-	url = git@github.com/calebemonteiro/AIDL_Project
+	url = git@github.com:calebemonteiro/AIDL_Project
