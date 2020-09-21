@@ -1,10 +1,10 @@
 # Using autoencoders to compress and restore facial images
 
 The aim of this project is to experiment with deep learning autoencoders for different purposes:
-- [Compressinng face images](facecompressor/README.md)
+- [Compressinng face images](https://github.com/abel-bernabeu/facecompressor/blob/master/README.md)
 - [Damage repair](pyramidal/README.md)
 - [Colorization](colorization/README.md)
-- [Super-resolution](srgan/README.md)
+- [Super-resolution](https://github.com/calebemonteiro/AIDL_Project/blob/master/README.md)
 
 
 # Getting the source code
