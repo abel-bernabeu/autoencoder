@@ -35,7 +35,10 @@ The jupyter notebook used for this task can be found here:
 
 **Using AutoEncoders for face colorization**
 
-This task consists in the development of a vanilla AutoEncoder with a basic architecture of 3 downsampling steps, 1 linear fc layer and 3 upsamplig steps.
+This task consists in the development of an AutoEncoder for colorizing faces. The colorization Strategy has been takeen from the paper 
+
+
+
 
 Tha task has been developed for a better understanding of AutoEncoders, architectures, filters learned, outputs etc...
 
