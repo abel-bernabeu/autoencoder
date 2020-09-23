@@ -27,7 +27,7 @@ The generated dataset can be downloaded from the following link:
 
 This task consists in the development of a vanilla AutoEncoder with a basic architecture of 3 downsampling steps, 1 linear fc layer and 3 upsamplig steps.
 
-Tha task has been developed for a better understanding of AutoEncoders, architectures, filters learned, outputs etc...
+The task has been developed for a better understanding of AutoEncoders, architectures, filters learned, outputs etc...
 
 The jupyter notebook used for this task can be found here: 
 [[Vanilla AutoEncoder]](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Convolutional_Autoencoder_complete.ipynb)
@@ -35,12 +35,12 @@ The jupyter notebook used for this task can be found here:
 
 **Using AutoEncoders for face colorization**
 
-This task consists in the development of an AutoEncoder for colorizing faces. The colorization Strategy has been takeen from the paper 
+This task consists in the development of an AutoEncoder for colorizing faces. The colorization strategy has been takeen from the paper Zhang, R., Isola, P., & Efros, A. A. [[Colorful image colorization.]](https://arxiv.org/abs/1603.08511) ECCV 2016.
 
 
 
 
-Tha task has been developed for a better understanding of AutoEncoders, architectures, filters learned, outputs etc...
+The task has been developed for a better understanding of AutoEncoders, architectures, filters learned, outputs etc...
 
 The jupyter notebook used for this task can be found here: 
 [[Face colorization]](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Colorization_05_Adam_mse%2BTransfer_Learning.ipynb)
