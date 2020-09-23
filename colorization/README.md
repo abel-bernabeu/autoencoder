@@ -3,7 +3,7 @@
 
 **[Sept20]** This is the result of the work done for the Artificial Intelligence with Deep Learning postgraduate course at the UPC (Ed. 2019-2020).
 
-The goal of the project is to explore and understand the filtering, denoising, colorization, etc. of images, but with focus on colorization of face images: 
+The goal of the subproject is to explore and understand the filtering, denoising, colorization, etc. of images, but with focus on colorization of face images: 
 
 **Grayscale to Colored Images**
 
@@ -23,9 +23,21 @@ The script can be found in the following link:
 The generated dataset can be downloaded from the following link:
 [[Generated Dataset]](https://drive.google.com/drive/folders/1tRzBwu84J3xty2zPY3RU3rtYEppL3a3I?usp=sharing)
 
-**Exploring a Vanilla AE**
+**Exploring a Vanilla AutoEncoder**
 
-Task developed for a better understanding of AutoEncoders, architectures, outputs etc...
+This task consists in the development of a vanilla AutoEncoder with a basic architecture of 3 downsampling steps, 1 linear fc layer and 3 upsamplig steps.
+
+Tha task has been developed for a better understanding of AutoEncoders, architectures, filters learned, outputs etc...
 
 The jupyter notebook used for this task can be found here: 
 [[Vanilla AutoEncoder]](https://drive.google.com/drive/folders/1tRzBwu84J3xty2zPY3RU3rtYEppL3a3I?usp=sharing)
+
+
+**Using AutoEncoders for face colorization**
+
+This task consists in the development of a vanilla AutoEncoder with a basic architecture of 3 downsampling steps, 1 linear fc layer and 3 upsamplig steps.
+
+Tha task has been developed for a better understanding of AutoEncoders, architectures, filters learned, outputs etc...
+
+The jupyter notebook used for this task can be found here: 
+[[Face colorization]](https://drive.google.com/drive/folders/1tRzBwu84J3xty2zPY3RU3rtYEppL3a3I?usp=sharing)
