@@ -5,6 +5,5 @@
 
 Exploring and understanding the filtering, denoising, colorization, etc. of images. Focus on colorization: Grayscale to Colored Image
 
-![Teaser Image](./colorization/Colorization_concept.png)
+![Teaser Image](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Colorization_concept.png)
 
-colorization/Colorization_concept.png
