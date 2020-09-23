@@ -30,7 +30,7 @@ This task consists in the development of a vanilla AutoEncoder with a basic arch
 Tha task has been developed for a better understanding of AutoEncoders, architectures, filters learned, outputs etc...
 
 The jupyter notebook used for this task can be found here: 
-[[Vanilla AutoEncoder]](https://drive.google.com/drive/folders/1tRzBwu84J3xty2zPY3RU3rtYEppL3a3I?usp=sharing)
+[[Vanilla AutoEncoder]](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Convolutional_Autoencoder_complete.ipynb)
 
 
 **Using AutoEncoders for face colorization**
@@ -40,4 +40,4 @@ This task consists in the development of a vanilla AutoEncoder with a basic arch
 Tha task has been developed for a better understanding of AutoEncoders, architectures, filters learned, outputs etc...
 
 The jupyter notebook used for this task can be found here: 
-[[Face colorization]](https://drive.google.com/drive/folders/1tRzBwu84J3xty2zPY3RU3rtYEppL3a3I?usp=sharing)
+[[Face colorization]](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Colorization_05_Adam_mse%2BTransfer_Learning.ipynb)
