@@ -1,4 +1,3 @@
-<!--<h3><b>Artistic applications of AutoEncoders</b></h3>-->
 ## <b>Artistic applications of AutoEncoders - Colorization</b> <br>
 
 **[Sept20]** This is the result of the work done for the Artificial Intelligence with Deep Learning postgraduate course at the UPC (Ed. 2019-2020).
@@ -38,8 +37,9 @@ The jupyter notebook used for this task can be found here:
 This task consists in the development of an AutoEncoder for colorizing faces. The colorization strategy has been takeen from the paper Zhang, R., Isola, P., & Efros, A. A. [[Colorful image colorization.]](https://arxiv.org/abs/1603.08511) ECCV 2016.
 
 For the colorization of images we’ll use the Lab color space that completely separates the lightness from color. The Lab color space allows to get pure black and white (grayscale) information of an image in one single channel (L) and the other two channels (ab) will contain the color information. For our dataset we need to perform a preprocessing by transforming the RGB images into Lab images, feed the AE with (L) channel as input and corresponding (ab) channels as the supervisory signal and finally postprocess the output to save the Lab image into a RGB again.
-
 ![Lab_Space](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Lab_Space.png)
+
+Two approaches has been developed 
 
 The jupyter notebook used for this task can be found here: 
 [[Face colorization]](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Colorization_05_Adam_mse%2BTransfer_Learning.ipynb)
