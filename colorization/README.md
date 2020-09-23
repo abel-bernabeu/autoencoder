@@ -3,3 +3,4 @@
 
 **[Sept20]** This is the result of the work done for the Artificial Intelligence with Deep Learning postgraduate course at the UPC (Ed. 2019-2020).
 
+Exploring and understanding the filtering, denoising, colorization, etc. of images. Focus on colorization: Grayscale to Colored Image
