@@ -39,7 +39,13 @@ This task consists in the development of an AutoEncoder for colorizing faces. Th
 For the colorization of images we’ll use the Lab color space that completely separates the lightness from color. The Lab color space allows to get pure black and white (grayscale) information of an image in one single channel (L) and the other two channels (ab) will contain the color information. For our dataset we need to perform a preprocessing by transforming the RGB images into Lab images, feed the AE with (L) channel as input and corresponding (ab) channels as the supervisory signal and finally postprocess the output to save the Lab image into a RGB again.
 ![Lab_Space](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Lab_Space.png)
 
-Two approaches has been developed 
+Two approaches has been developed to check the performance in colorization:
+
+   **1st approach: Train from scratch an AE using our own dataset**
+
+Encoder consisting of some convolutional layers with ReLU activation function and decoder with upsampling layers to restore dimensions:
+![Architecture 1st](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Lab_Space.png)
+
 
 The jupyter notebook used for this task can be found here: 
 [[Face colorization]](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Colorization_05_Adam_mse%2BTransfer_Learning.ipynb)
