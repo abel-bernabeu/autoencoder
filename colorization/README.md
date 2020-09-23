@@ -7,3 +7,17 @@ Exploring and understanding the filtering, denoising, colorization, etc. of imag
 
 ![Teaser Image](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Colorization_concept.png)
 
+**Milestones in the colorization subproject:**
+
+Build a face images dataset based on Voxceleb2 - Exploring a vanilla AE - Using AE for face colorization
+
+**Building the Dataset**
+
+Development of a script to generate a subset of 110K face images by picking just a few frames from videos of Voxceleb2 dataset.
+
+The script can be found in the following link:
+[[Get Images]](http://richzhang.github.io/colorization/) <br>
+
+The generated dataset can be downloaded from the following link:
+
+
