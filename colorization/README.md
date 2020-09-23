@@ -3,9 +3,11 @@
 
 **[Sept20]** This is the result of the work done for the Artificial Intelligence with Deep Learning postgraduate course at the UPC (Ed. 2019-2020).
 
-Exploring and understanding the filtering, denoising, colorization, etc. of images. Focus on colorization: Grayscale to Colored Image
+The goal of the project is to explore and understand the filtering, denoising, colorization, etc. of images but focus on colorization: 
 
-![Teaser Image](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Colorization_concept.png)
+**Grayscale to Colored Images**
+
+![Colorization concept image](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Colorization_concept.png)
 
 **Milestones in the colorization subproject:**
 
@@ -20,3 +22,10 @@ The script can be found in the following link:
 
 The generated dataset can be downloaded from the following link:
 [[Generated Dataset]](https://drive.google.com/drive/folders/1tRzBwu84J3xty2zPY3RU3rtYEppL3a3I?usp=sharing)
+
+**Exploring a Vanilla AE**
+
+Task developed for a better understanding of AutoEncoders, architectures, outputs etc...
+
+The jupyter notebook used for this task can be found here: 
+[[Vanilla AutoEncoder]](https://drive.google.com/drive/folders/1tRzBwu84J3xty2zPY3RU3rtYEppL3a3I?usp=sharing)
