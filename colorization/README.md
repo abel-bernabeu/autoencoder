@@ -16,8 +16,7 @@ Build a face images dataset based on Voxceleb2 - Exploring a vanilla AE - Using 
 Development of a script to generate a subset of 110K face images by picking just a few frames from videos of Voxceleb2 dataset.
 
 The script can be found in the following link:
-[[Get Images]](http://richzhang.github.io/colorization/) <br>
+[[Get Images Script]](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Get_Images.ipynb) <br>
 
 The generated dataset can be downloaded from the following link:
-
-
+[[Generated Dataset]](https://drive.google.com/drive/folders/1tRzBwu84J3xty2zPY3RU3rtYEppL3a3I?usp=sharing)
