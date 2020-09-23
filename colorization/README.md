@@ -3,13 +3,13 @@
 
 **[Sept20]** This is the result of the work done for the Artificial Intelligence with Deep Learning postgraduate course at the UPC (Ed. 2019-2020).
 
-The goal of the subproject is to explore and understand the filtering, denoising, colorization, etc. of images, but with focus on colorization of face images: 
+The goal of the experiment is to explore and understand the filtering, denoising, colorization, etc. of images, but with focus on colorization of face images: 
 
 **Grayscale to Colored Images**
 
 ![Colorization concept image](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Colorization_concept.png)
 
-**Milestones in the colorization subproject:**
+**Milestones in the colorization experiment:**
 
 Build a face images dataset based on Voxceleb2 - Exploring a vanilla AE - Using AE for face colorization
 
