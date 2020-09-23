@@ -3,7 +3,7 @@
 
 **[Sept20]** This is the result of the work done for the Artificial Intelligence with Deep Learning postgraduate course at the UPC (Ed. 2019-2020).
 
-The goal of the project is to explore and understand the filtering, denoising, colorization, etc. of images but focus on colorization: 
+The goal of the project is to explore and understand the filtering, denoising, colorization, etc. of images, but with focus on colorization of face images: 
 
 **Grayscale to Colored Images**
 
