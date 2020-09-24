@@ -305,4 +305,4 @@ The best data source we could find for this comparison was from "JPEG vs. JPEG20
 
 Seeing this graph one can see that in terms of image quality, the tried architecture outperforms JPEG and JPEG 2000. Therefore, speed considerations apart, there seem to be potential for deep neural networks to be adopted for image compression.
 
-Finally, it may be argued that training the model for the specific domain of human faces may have pushed up our PSNR. However, our setup also suggests that tailoring the training for a specific domain is valid strategy for addressing the needs of niche markets. 
+Finally, it may be argued that training the model for the specific domain of human faces may have pushed up our PSNR. However, our setup also suggests that tailoring the training for a specific domain is a valid strategy for addressing the needs of niche markets. 
