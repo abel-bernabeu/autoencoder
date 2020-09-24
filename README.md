@@ -13,7 +13,7 @@ This project contains git submodules, so in order to download the source you nee
 
 ```git clone  git@github.com:abel-bernabeu/autoencoder.git --recursive```
 
-# Face images compressor
+# Compressing face images
 
 This section describes the implementation and training of a compressive
 autoencoder tailored for the domain of human face images.
