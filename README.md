@@ -1,8 +1,3 @@
----
-number_sections: true
----
-
-
 # Using autoencoders to compress and restore facial images
 
 The aim of this project is to experiment with deep learning autoencoders for different purposes:
