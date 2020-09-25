@@ -58,7 +58,7 @@ The jupyter notebook used for this task can be found here:
 
 In general, achieved face image colorization is reasonable but can be improved with bigger dataset. 
 
-The approach 2 using transfer learning achieves visually and numerically a better performance:
+The approach 2 using transfer learning achieves visually and numerically a better performance with lower computational resources:
 
 Accuracy approach 1: 0.8747 and uses 6,219,538 trainable params
 
