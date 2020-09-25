@@ -95,7 +95,6 @@ For this first experiment we will not implement any kind of quantization and we 
 |----------------------------|-------|   
 |  batch_size                | 32    | 
 |  lr                        | 1e-6  |
-|  device                    | 'cuda'|
 |  block_width               | 128   |
 |  block_height              | 128   |
 |  hidden_state_num_channels | 96    |
@@ -104,11 +103,6 @@ For this first experiment we will not implement any kind of quantization and we 
 |  train_dataset_size        | 5000  |
 |  test_dataset_size         | 500   |
 |  num_epochs                | 12577 |
-|  num_workers               | 4     |
-|  name                      | "experiment1"|
-|  port                      | 6100         |
-|  checkpointing_freq        | 10           |
-|  inference_freq            | 200          |
 
 ### Results
 
@@ -128,7 +122,6 @@ Again no quantization is provided.
 |----------------------------|-------|   
 |batch_size' | 40
 |lr' | 1e-6
-|device' | 'cuda'
 |block_width' | 224
 |block_height' | 224
 |hidden_state_num_channels  | 48
@@ -137,11 +130,6 @@ Again no quantization is provided.
 |train_dataset_size  | 1000
 |test_dataset_size | 500
 |num_epochs | 16000
-|num_workers | 4
-|name | "experiment2"
-|port | 6200
-|checkpointing_freq | 10
-|inference_freq | 200
 
 ### Results
 
@@ -159,7 +147,6 @@ On this third experiment we introduce 3 bits quantization of the features. This 
 |----------------------------|-------|   
 |batch_size' | 40 |
 |lr | 1e-6 |
-|device  | 'cuda'
 |block_width  | 224
 |block_height  | 224
 |hidden_state_num_channels | 48
@@ -168,11 +155,6 @@ On this third experiment we introduce 3 bits quantization of the features. This 
 |train_dataset_size | 1000
 |test_dataset_size | 500
 |num_epochs | 2500
-|num_workers | 4
-|name | "experiment3"
-|port | 6300
-|checkpointing_freq | 10
-|inference_freq | 200
 
 ## Results
 
@@ -190,7 +172,6 @@ Hence, in this experiment we train a model that reduces dimensionality to 1/8, a
 |----------------------------|-------|   
 |batch_size | 40
 |lr | 1e-6
-|device | 'cuda'
 |block_width | 224
 |block_height | 224
 |hidden_state_num_channels | 24
@@ -199,11 +180,6 @@ Hence, in this experiment we train a model that reduces dimensionality to 1/8, a
 |train_dataset_size | 1000
 |test_dataset_size | 500
 |num_epochs | 110000
-|num_workers | 4
-|name | "experiment4"
-|port | 6400
-|checkpointing_freq | 10
-|inference_freq | 200
 
 ## Results
 
@@ -219,7 +195,6 @@ Similarly to what it was done for experiment 3, the second stage of the training
 |----------------------------|-------|   
 |batch_size | 40
 |lr | 1e-8
-|device | 'cuda'
 |block_width | 224
 |block_height | 224
 |hidden_state_num_channels | 24
@@ -228,11 +203,6 @@ Similarly to what it was done for experiment 3, the second stage of the training
 |train_dataset_size | 1000
 |test_dataset_size | 500
 |num_epochs | 12650
-|num_workers | 4
-|name | "experiment5"
-|port | 6500
-|checkpointing_freq | 10
-|inference_freq | 200
 
 ### Results
 
@@ -246,7 +216,6 @@ In this experiment we try a radically different approach for training the same m
 |----------------------------|-------|   
 |batch_size | 40
 |lr | 2e-5
-|device | 'cuda'
 |block_width | 224
 |block_height | 224
 |hidden_state_num_channels | 24
@@ -255,11 +224,6 @@ In this experiment we try a radically different approach for training the same m
 |train_dataset_size | 60000
 |test_dataset_size | 6000
 |num_epochs | 960
-|num_workers | 4
-|name | "experiment6"
-|port | 6600
-|checkpointing_freq | 10
-|inference_freq | 200
 
 ### Results
 
@@ -273,7 +237,6 @@ In this experiment we introduce a 6 bits quantization in the model from experime
 |----------------------------|-------|   
 |batch_size | 40
 |lr | 1e-8
-|device | 'cuda'
 |block_width | 224
 |block_height | 224
 |hidden_state_num_channels | 24
@@ -282,11 +245,6 @@ In this experiment we introduce a 6 bits quantization in the model from experime
 |train_dataset_size | 60000
 |test_dataset_size | 6000
 |num_epochs | 350
-|num_workers | 4
-|name | "experiment7"
-|port | 6700
-|checkpointing_freq | 10
-|inference_freq | 200
 
 ### Results
 
