@@ -46,6 +46,11 @@ Two approaches has been developed to check the performance in colorization:
 Encoder consisting of some convolutional layers with ReLU activation function and decoder with upsampling layers to restore dimensions:
 ![Architecture 1st](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Architecture_1st.png) ![Architecture 1st](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Architecture.png)
 
+   **2nd approach: Using transfer learning technique**
+
+Connecting a VGG16 pretrained model as a feature extractor (removing the classification part) with the decoder.:
+![Architecture 2nd](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Architecture_2nd.png) ![Vgg16](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Vgg16.png)
+
 
 The jupyter notebook used for this task can be found here: 
 [[Face colorization]](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Colorization_05_Adam_mse%2BTransfer_Learning.ipynb)
