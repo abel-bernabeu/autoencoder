@@ -12,7 +12,7 @@ The goal of the experiment is to explore and understand the filtering, denoising
 
 Build a face images dataset based on Voxceleb2 - Exploring a vanilla AE - Using AE for face colorization
 
-**Building the Dataset**
+**.-Building the Dataset**
 
 Development of a script to generate a subset of 110K face images by picking just a few frames from videos of Voxceleb2 dataset.
 
@@ -22,7 +22,7 @@ The script can be found in the following link:
 The generated dataset can be downloaded from the following link:
 [[Generated Dataset]](https://drive.google.com/drive/folders/1tRzBwu84J3xty2zPY3RU3rtYEppL3a3I?usp=sharing)
 
-**Exploring a Vanilla AutoEncoder**
+**.-Exploring a Vanilla AutoEncoder**
 
 This task consists in the development of a vanilla AutoEncoder with a basic architecture of 3 downsampling steps, 1 linear fc layer and 3 upsamplig steps.
 
@@ -32,7 +32,7 @@ The jupyter notebook used for this task can be found here:
 [[Vanilla AutoEncoder]](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Convolutional_Autoencoder_complete.ipynb)
 
 
-**Using AutoEncoders for face colorization**
+**.-Using AutoEncoders for face colorization**
 
 This task consists in the development of an AutoEncoder for colorizing faces. The colorization strategy has been taken from the paper Zhang, R., Isola, P., & Efros, A. A. [[Colorful image colorization.]](https://arxiv.org/abs/1603.08511) ECCV 2016.
 
@@ -51,6 +51,19 @@ Encoder consisting of some convolutional layers with ReLU activation function an
 Connecting a VGG16 pretrained model as a feature extractor (removing the classification part) with the decoder.:
 ![Vgg16](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Vgg16.png)
 
-
 The jupyter notebook used for this task can be found here: 
 [[Face colorization]](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Colorization_05_Adam_mse%2BTransfer_Learning.ipynb)
+
+**Colorization experiments and some conclusions:**
+
+In general, achieved face image colorization is reasonable but can be improved with bigger dataset. 
+
+The approach 2 using transfer learning achieves visually and numerically a better performance:
+
+Accuracy approach 1: 0.8747 and uses 6,219,538 trainable params
+
+Accuracy approach 2: 0.8913 and uses 1,572,114 trainable params 
+![Vgg16](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Results_Colorization.png)
+The colorization of other kind of images is failing due to face biased dataset: 
+
+
