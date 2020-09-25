@@ -252,7 +252,22 @@ In this experiment we introduce a 6 bits quantization in the model from experime
 
 ### Results
 
+In the following graph we see test and train PSNR, with the test PSRN peaking at
+43.4 dB right before the end of the 350 epochs of the experiment.
+
+![e7_test_and_train_psrn](resources/compression/e7-graphs.png "Experiment 7 test and train PSNR")
+
+In the following image mosaic we depict the input (top row), output (middle row) and 
+error (bottom row) for a few test samples. The error images are a depiction
+of the ground truth minus the reconstructed image. For every RGB component we applied
+the formula "max(0, min(1, x*8 + 0.5))". Note that with this color palette a pixel with
+zero error is depicted as gray.
+
+![e7_images](resources/compression/e7-images.png "Experiment 7 test images")
+
 A 6 bits quantization needed for increasing the compression ratio to 10.66 was introduced, which impacted the PSNR (going from 44.02 dB to 43.08 dB). Then the decoder was trained for removing that noise and went from 43.08 dB to 43.4 dB.
+The resulting images look sharp, in line with the high PSNR values.
+
 
 ## Final conclusions
 
@@ -263,7 +278,7 @@ For seeing this result in perspective one needs to look at the PSNR for an equiv
 
 The best data source we could find for this comparison was from "JPEG vs. JPEG2000: An Objective Comparison of Image Encoding Quality", by Farzad Ebrahimi, Matthieu Chamik and Stefan Winkler, published in 2004. That paper, in its figure 10, benchmarks JPEG and JPEG2000 jointly plotting curves of PSNR per compression ratio for two popular implementations. We extracted the data by reverse engineering the figure and plotted our best choice result altogether with the original curves.
 
-![comparison](resources/compare.png "Compression methods comparison")
+![comparison](resources/compression/compare.png "Compression methods comparison")
 
 Seeing this graph one can see that in terms of image quality, the tried architecture outperforms JPEG and JPEG 2000. Therefore, speed considerations apart, deep neural networks have potential for being adopted in image compression.
 
