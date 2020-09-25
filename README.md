@@ -90,19 +90,21 @@ The purpose of this experiment is to confirm that we have understood the archite
 The paper authors claim that their "subpixel" operator is a better upsampler than transposed convolution, because it does not suffer from the checker board artifact produced by the kernel overlaps (see [this blog post](https://distill.pub/2016/deconv-checkerboard/) for illustrated examples). This a bold clain that needs, at least, a visual confirmation.
 
 For this first experiment we will not implement any kind of quantization and we will only perform a 50% dimensionality reduction (sparsity from now on). This dimensionality reduction is achieved by using 96 channels in the features tensor (as opposed to 192 channels that would be needed if we wanted to keep the dimensionality from the input).
+
+We train with patches of 128x128, as the paper authors did, even though the model can support any size. All the other relevant hyperparameters are collected in the following table. In this (and all the seqsequent experiments) we use the Adam optimizer.
  
-|  Hyper parameter           | Value |
-|----------------------------|-------|   
-|  batch_size                | 32    | 
-|  lr                        | 1e-6  |
-|  block_width               | 128   |
-|  block_height              | 128   |
-|  hidden_state_num_channels | 96    |
-|  quantize                  | False |
-|  num_bits                  | 0     |
-|  train_dataset_size        | 5000  |
-|  test_dataset_size         | 500   |
-|  num_epochs                | 12577 |
+|  Hyper parameter name      | Value |   Description    
+|----------------------------|-------|---------------
+|  batch_size                | 32    |  Batch size 
+|  lr                        | 1e-6  |  Learning rate
+|  block_width               | 128   |  Input block width
+|  block_height              | 128   |  Input block height
+|  hidden_state_num_channels | 96    |  Number of channels in the features tensor
+|  quantize                  | False |  Whether quantization is enabled
+|  num_bits                  | 0     |  The number bits when quantizing, ignored otherwise
+|  train_dataset_size        | 5000  |  Number of frames from the "dev" partition used for training
+|  test_dataset_size         | 500   |  Number of frames from the "test" partition used for computing the test error and test PSRN
+|  num_epochs                | 12577 |  Number of epochs done during training
 
 ### Results
 
@@ -116,20 +118,20 @@ Training the model took 4 days on a Tesla P100, setting also a lower bound on ho
 
 In this second experiment we further squeeze the features tensor, going from 96 channels to only 48 for achieving a 25% dimensionality reduction to confirm the images can be further squeezed without serious damage. We define a serious damage a PSNR for the test set below 32 db.
 
-Again no quantization is provided.
+Again no quantization is provided. The input patch size is changed to 224x224 to match the dataset frame size, just for making the visualization a bit nicer.
 
-|  Hyper parameter           | Value |
-|----------------------------|-------|   
+|  Hyper parameter name      | Value |
+|----------------------------|-------|
 |batch_size' | 40
 |lr' | 1e-6
-|block_width' | 224
-|block_height' | 224
-|hidden_state_num_channels  | 48
+|block_width' | **224**
+|block_height' | **224**
+|hidden_state_num_channels  | **48**
 |quantize' | False
 |num_bits' | 0
 |train_dataset_size  | 1000
 |test_dataset_size | 500
-|num_epochs | 16000
+|num_epochs | **16000**
 
 ### Results
 
@@ -143,18 +145,18 @@ On this third experiment we introduce 3 bits quantization of the features. This 
 
 2. The quantizing model in trained with the encoder weights frozen and the quantization and dequantization modules enabled, with the purpose of training the decoder for undoing the quantization.
 
-|  Hyper parameter           | Value |
-|----------------------------|-------|   
-|batch_size' | 40 |
-|lr | 1e-6 |
+|  Hyper parameter name      | Value |
+|----------------------------|-------|
+|batch_size | 40
+|lr | 1e-6
 |block_width  | 224
 |block_height  | 224
 |hidden_state_num_channels | 48
-|quantize | True
-|num_bits | 3
+|quantize | **True**
+|num_bits | **3**
 |train_dataset_size | 1000
 |test_dataset_size | 500
-|num_epochs | 2500
+|num_epochs | **2500**
 
 ## Results
 
@@ -168,18 +170,20 @@ Although we can certainly try to rely on quantization and entropic coding for br
 
 Hence, in this experiment we train a model that reduces dimensionality to 1/8, although but we do not yet perform  quantization. We do not introduce quantization yet because we learned in experiment 3 that it is possible to first train without quantization and then introduce the quantization on a second stage.
 
-|  Hyper parameter           | Value |
-|----------------------------|-------|   
+Notice in the following table the hyper parameter values in bold typography, which are the ones whose values changed from previous experiment.
+
+|  Hyper parameter name      | Value |
+|----------------------------|-------|
 |batch_size | 40
 |lr | 1e-6
 |block_width | 224
 |block_height | 224
-|hidden_state_num_channels | 24
-|quantize | False
-|num_bits | 0
+|hidden_state_num_channels | **24**
+|quantize | **False**
+|num_bits | **0**
 |train_dataset_size | 1000
 |test_dataset_size | 500
-|num_epochs | 110000
+|num_epochs | **110000**
 
 ## Results
 
@@ -191,18 +195,18 @@ We do the second stage of training the quantizing model, expecting to confirm on
 
 Similarly to what it was done for experiment 3, the second stage of the training is achieved is by transferring the encoder and decoder weights learned with experiment 4, freezing the encoder weights and further training the decoder for undoing the quantization.
 
-|  Hyper parameter           | Value |
-|----------------------------|-------|   
+|  Hyper parameter name      | Value |
+|----------------------------|-------|
 |batch_size | 40
-|lr | 1e-8
+|lr | **1e-8**
 |block_width | 224
 |block_height | 224
 |hidden_state_num_channels | 24
-|quantize | True
-|num_bits | 6
+|quantize | **True**
+|num_bits | **6**
 |train_dataset_size | 1000
 |test_dataset_size | 500
-|num_epochs | 12650
+|num_epochs | **12650**
 
 ### Results
 
@@ -212,18 +216,18 @@ Adding the quantization worsened the test PSNR: went from 40.1 dB to 39.7 dB. Ho
 
 In this experiment we try a radically different approach for training the same model from experiment 4. Rather than running for as many epochs as possible (110K in experiment 4) we do fewer epochs with an increased dataset size (60K samples as opposed to 1K samples in experiment 4) and an increased learning rate.
 
-|  Hyper parameter           | Value |
-|----------------------------|-------|   
+|  Hyper parameter name      | Value |
+|----------------------------|-------|
 |batch_size | 40
-|lr | 2e-5
+|lr | **2e-5**
 |block_width | 224
 |block_height | 224
 |hidden_state_num_channels | 24
 |quantize | False
 |num_bits | 0
-|train_dataset_size | 60000
-|test_dataset_size | 6000
-|num_epochs | 960
+|train_dataset_size | **60000**
+|test_dataset_size | **6000**
+|num_epochs | **960**
 
 ### Results
 
@@ -233,18 +237,18 @@ The approach really pays off, achieving higher accuracy with just 5 days of trai
 
 In this experiment we introduce a 6 bits quantization in the model from experiment 6. For the training we used only 12 additional hours of a Tesla P100.
 
-|  Hyper parameter           | Value |
-|----------------------------|-------|   
+|  Hyper parameter name      | Value |
+|----------------------------|-------|
 |batch_size | 40
-|lr | 1e-8
+|lr | **1e-8**
 |block_width | 224
 |block_height | 224
 |hidden_state_num_channels | 24
-|quantize | True
-|num_bits | 6
+|quantize | **True**
+|num_bits | **6**
 |train_dataset_size | 60000
 |test_dataset_size | 6000
-|num_epochs | 350
+|num_epochs | **350**
 
 ### Results
 
