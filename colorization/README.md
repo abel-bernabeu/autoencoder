@@ -49,7 +49,7 @@ Encoder consisting of some convolutional layers with ReLU activation function an
    **2nd approach: Using transfer learning technique**
 
 Connecting a VGG16 pretrained model as a feature extractor (removing the classification part) with the decoder.:
-![Architecture 2nd](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Architecture_2nd.png) ![Vgg16](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Vgg16.png)
+![Vgg16](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Vgg16.png)
 
 
 The jupyter notebook used for this task can be found here: 
