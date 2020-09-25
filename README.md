@@ -260,8 +260,8 @@ In the following graph we see test and train PSNR, with the test PSRN peaking at
 In the following image mosaic we depict the input (top row), output (middle row) and 
 error (bottom row) for a few test samples. The error images are a depiction
 of the ground truth minus the reconstructed image. For every RGB component we applied
-the formula "max(0, min(1, x*8 + 0.5))". Note that with this color palette a pixel with
-zero error is depicted as gray.
+the formula "max(0, min(1, 8 x + 1/2))". Note that with this color palette a pixel with
+zero error is depicted as pure gray.
 
 ![e7_images](resources/compression/e7-images.png "Experiment 7 test images")
 
