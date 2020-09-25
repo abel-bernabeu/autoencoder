@@ -112,7 +112,7 @@ We see there is no blurriness, which is very pleasant to see. The subpixel opera
 
 The quality of this model sets 43 dB as upper bound on the accuracy for this model. The quality measurement will not get any better as we try smaller sparsity ratios in the next experiments
 
-Training the model took 4 days on a Tesla P100, setting also a lower bound on how long will take us to train state of de art models for image compression.
+Training the model took 4 days on a Tesla P100, setting also a lower bound on how long will take us to train state of the art models for image compression.
 
 ## Experiment 2: sparsity at 1/4
 
