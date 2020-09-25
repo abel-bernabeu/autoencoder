@@ -66,4 +66,3 @@ Accuracy approach 2: 0.8913 and uses 1,572,114 trainable params
 ![Results_Colorization](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Results_Colorization.png)
 The colorization of other kind of images is failing due to face biased dataset: 
 ![Landscape Colorization](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/lanscape.png)
-
