@@ -18,7 +18,7 @@ This project contains git submodules, so in order to download the source you nee
 This section describes the implementation and training of a compressive
 autoencoder tailored for the domain of human face images.
 
-A Jupyter notebook that scripts the experiments described in this report
+A Jupyter notebook that scripts the compression experiments described in this report
 is available in the facecompressor GitHub repo (see
 [here](https://github.com/abel-bernabeu/facecompressor/blob/master/train.ipynb)). This document
 is a reading companion for that notebook, where the work was originally
