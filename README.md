@@ -37,7 +37,7 @@ do:
 
 ## Compiled dataset
 
-The dataset used in the following experiments is based on VoxCeleb2.
+The dataset used in the compression experiments is based on VoxCeleb2.
 The VoxCeleb2 dataset contains 224x244 sized videos of human faces.
 The videos are organized in four levels of directories:
 
