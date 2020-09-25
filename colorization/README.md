@@ -44,7 +44,7 @@ Two approaches has been developed to check the performance in colorization:
    **1st approach: Train from scratch an AE using our own dataset**
 
 Encoder consisting of some convolutional layers with ReLU activation function and decoder with upsampling layers to restore dimensions:
-![Architecture 1st](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Architecture_1st.png) ![Architecture 1st](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Architecture.png)
+![Architecture 1st](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Architecture_1st.png)
 
    **2nd approach: Using transfer learning technique**
 
