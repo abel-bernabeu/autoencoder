@@ -304,9 +304,14 @@ The resulting images look sharp, in line with the high PSNR values.
 The training in two stages technique proposed in this technical report, in spite of its simplicity, is a valid strategy for dealing with quantization layers during training.
 
 The model from experiment 7 is our best choice so far (achieving a 10.6 compression ratio with a 43.4 dB PSNR).
-For seeing this result in perspective one needs to look at the PSNR for an equivalent compression ratio with standard compression methods like JPEG and JPEG 2000.
+For seeing this result in perspective one needs to look at the PSNR for an equivalent
+compression ratio with standard compression methods like JPEG and JPEG 2000.
 
-The best data source we could find for this comparison was from "JPEG vs. JPEG2000: An Objective Comparison of Image Encoding Quality", by Farzad Ebrahimi, Matthieu Chamik and Stefan Winkler, published in 2004. That paper, in its figure 10, benchmarks JPEG and JPEG2000 jointly plotting curves of PSNR per compression ratio for two popular implementations. We extracted the data by reverse engineering the figure and plotted our best choice result altogether with the original curves.
+The best data source we could find for this comparison was from "JPEG vs. JPEG2000:
+An Objective Comparison of Image Encoding Quality", by Farzad Ebrahimi,
+Matthieu Chamik and Stefan Winkler, published in 2004. That paper, in its figure 10,
+benchmarks JPEG and JPEG2000 jointly plotting their PSNR per compression ratio curves. 
+We extracted the data by reverse engineering the figure and plotted our best choice result altogether with the original curves.
 
 ![comparison](resources/compression/compare.png "Compression methods comparison")
 
