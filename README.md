@@ -184,7 +184,13 @@ On this third experiment we introduce 3 bits quantization of the features. This 
 
 ## Results
 
-The test PSNR improves about 0.2 dB, showing that the decoder can learn to undo some of the noise introduced by the quantization.
+The test PSNR improves about 0.2 dB as shown in the following figure.
+
+![e3_test_and_train_psnr](resources/compression/e3-graphs.png "Experiment 7 test and train PSNR")
+
+A very interesting conclusion is that **the decoder can actually learn to undo some of the noise introduced by the quantization***,
+confirming our experiment hypothesis.
+
 
 ### Experiment 4: sparsity at 1/8
 
@@ -279,7 +285,7 @@ In this experiment we introduce a 6 bits quantization in the model from experime
 In the following graph we see test and train PSNR, with the test PSRN peaking at
 43.4 dB right before the end of the 350 epochs of the experiment.
 
-![e7_test_and_train_psrn](resources/compression/e7-graphs.png "Experiment 7 test and train PSNR")
+![e7_test_and_train_psnr](resources/compression/e7-graphs.png "Experiment 7 test and train PSNR")
 
 In the following image mosaic we depict the input (top row), output (middle row) and 
 error (bottom row) for a few test samples. The error images are a depiction
