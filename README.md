@@ -44,7 +44,8 @@ common metric in image quality benchmarks.
 
 ## Compiled dataset
 
-The dataset used in the compression experiments is based on VoxCeleb2.
+The dataset used in the compression experiments is based on 
+[VoxCeleb2](http://www.robots.ox.ac.uk/~vgg/data/voxceleb/vox2.html).
 The VoxCeleb2 dataset contains 224x244 sized videos of human faces.
 The videos are organized in four levels of directories:
 
