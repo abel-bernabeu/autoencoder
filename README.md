@@ -27,13 +27,20 @@ developed.
 In this report we start describing the dataset used for our experiments.
 Then we develop a series of seven experiments leading to a final functional
 compressing model. In each of those experiments we craft an incrementally
-functional prototype or we test a different idea. For each experiment we
+more functional prototype or we test a different idea. For each experiment we
 do:
 
 - Describe the purpose.
 - Specify the hyper parameters (hparams).
-- Summarize the experiment results (collected from the corresponding
-  TensorBoard instance embedded in the training notebook).
+- Summarize the relevant results collected from a TensorBoard instance embedded
+  in the training notebook). The results are values of PSNR (Peak Signal to
+  Noise Ratio) for the test set, visualizations of the reconstructed images for
+  a handful of test samples or depictions of the error at the pixel level.
+  
+Note that PSNR and MSE (Mean Square Error) are equivalent in the sense
+that optimizing for the highest PSNR is equivalent to doing it for lowest MSE.
+In this document we prefer to talk in terms of PSNR just because it is a more
+common metric in image quality benchmarks. 
 
 ## Compiled dataset
 
@@ -54,19 +61,17 @@ The videos are organized in four levels of directories:
  
 - The fourth and last level contains, for a given video, clips
   of several seconds (typically less than ten seconds) where the
-  person face covers and perfectly fits each 224x224 frame. These
-  clips are commonly referred as utterances.
+  human face fits the 224x224 frame. These clips are commonly
+  referred as utterances.
 
 As a training set for the autoencoders in these experiments we
 compiled a training set with 60K frames belonging to 50K randomly
-selected utterances from the whole VoxCeleb2 dev partition. For a
-given randomly selected utterance we sample for the train set the
-first frame and one more frame every ten seconds. With most videos
-being typically shorter than ten seconds that means to pick one
-frame per video.
-
-Note that by picking our utterances randomly be ensure a good
-coverage of the whole set of person identities.
+selected utterances from the whole VoxCeleb2 "dev" partition. For the
+test we randomly pick utterances (videos). Then for each of the picked
+videos we extract the first frame and one more frame every ten seconds.
+Since most videos are typically shorter than ten seconds that means
+to pick one just frame per video. Note that by picking our utterances
+randomly be ensure a good coverage of the whole set of person identities.
 
 The test set is compiled following a similar approach. A total
 of 6K frames is picked for the test set by sampling from 5K
@@ -76,22 +81,35 @@ partition.
 The data subset compilation process can be repeated by downloading
 VoxCeleb2 and running the 
 [image_dataset.ipynb](https://github.com/abel-bernabeu/facecompressor/blob/master/autoencoder/tools/image_dataset.ipynb)
- Jupyter notebook. Our resulting
+ Jupyter notebook. The resulting
 compiled dataset can be downloaded from
 [here](https://www.dropbox.com/s/n03i55xxwqnned4/image_dataset.zip?dl=0).
 
 
 ## Experiment 1: sparsity at 1/2
 
-Our baseline model effort focuses on training the neural network proposed in "Lossy image compression with compression autoencoders", by Lucas Theis, Wenzhe Shi, Andrew Cunningham & Ferenc Husz, published in 2017 (see the [original paper](https://arxiv.org/pdf/1703.00395v1.pdf) for details). We make the addition of batch normalization layers for improved robustness, but other than that we try to stick to the proposed model as much as possible.
+Our baseline effort focuses on training the neural network proposed in "Lossy image compression with compression autoencoders", by Lucas Theis, Wenzhe Shi, Andrew Cunningham & Ferenc Husz, published in 2017 (see the [original paper](https://arxiv.org/pdf/1703.00395v1.pdf) for details).
+
+We make the addition of batch normalization layers for improved robustness, but other than that we try to stick to the proposed model as much as possible.
 
 The purpose of this experiment is to confirm that we have understood the architecture, and confirm that we can extract features and use them for reconstructing the original image.
 
-The paper authors claim that their "subpixel" operator is a better upsampler than transposed convolution, because it does not suffer from the checker board artifact produced by the kernel overlaps (see [this blog post](https://distill.pub/2016/deconv-checkerboard/) for illustrated examples). This a bold clain that needs, at least, a visual confirmation.
+The decoder includes an operator the paper authors call "subpixel", consisting on a regular
+convolution (as opposed to transposed) followind by a pixel shuffle. The paper authors
+claim that their "subpixel" operator is a better upsampler than transposed convolution.
+It is clamed that subpixel operations do not suffer from the checker board artifacts
+produced by the kernel overlaps on transposed convolutions (see
+[this blog post](https://distill.pub/2016/deconv-checkerboard/) for illustrated examples
+of checker board artifacts). This a bold claim that needs, at least, a visual
+confirmation.
 
 For this first experiment we will not implement any kind of quantization and we will only perform a 50% dimensionality reduction (sparsity from now on). This dimensionality reduction is achieved by using 96 channels in the features tensor (as opposed to 192 channels that would be needed if we wanted to keep the dimensionality from the input).
 
-We train with patches of 128x128, as the paper authors did, even though the model can support any size. All the other relevant hyperparameters are collected in the following table. In this (and all the seqsequent experiments) we use the Adam optimizer.
+We train with patches of 128x128, as the paper authors did, even though the model can
+support any input size because it is defined in terms of operators like convolution that
+do not assume any specific input size. Other relevant training choices are collected in
+the following hyperparameters are table. In this experiment (and all the seqsequent ones)
+we train using the Adam optimizer.
  
 |  Hyper parameter name      | Value |   Description    
 |----------------------------|-------|---------------
@@ -100,7 +118,7 @@ We train with patches of 128x128, as the paper authors did, even though the mode
 |  block_width               | 128   |  Input block width
 |  block_height              | 128   |  Input block height
 |  hidden_state_num_channels | 96    |  Number of channels in the features tensor
-|  quantize                  | False |  Whether quantization is enabled
+|  quantize                  | False |  Whether quantization is enabled for the features
 |  num_bits                  | 0     |  The number bits when quantizing, ignored otherwise
 |  train_dataset_size        | 5000  |  Number of frames from the "dev" partition used for training
 |  test_dataset_size         | 500   |  Number of frames from the "test" partition used for computing the test error and test PSRN
@@ -110,13 +128,18 @@ We train with patches of 128x128, as the paper authors did, even though the mode
 
 We see there is no blurriness, which is very pleasant to see. The subpixel operator certainly delivers a sharp reconstruction.
 
-The quality of this model sets 43 dB as upper bound on the accuracy for this model. The quality measurement will not get any better as we try smaller sparsity ratios in the next experiments
+![e1_images](resources/compression/e1-images.png "Experiment 1 test images showing sharp reconstructions")
+
+The quality of this model sets 43 dB as upper bound on the accuracy for this architecture. The quality measurements will not get any better as we try smaller sparsity ratios in the next experiments
 
 Training the model took 4 days on a Tesla P100, setting also a lower bound on how long will take us to train state of the art models for image compression.
 
 ## Experiment 2: sparsity at 1/4
 
-In this second experiment we further squeeze the features tensor, going from 96 channels to only 48 for achieving a 25% dimensionality reduction to confirm the images can be further squeezed without serious damage. We define a serious damage a PSNR for the test set below 32 db.
+In this second experiment we further squeeze the features tensor, going from 96 channels to
+only 48 for achieving a 25% dimensionality reduction to confirm the images can be further
+squeezed without serious damage. We define a serious damage as a PSNR for the test set
+below 32 dB.
 
 Again no quantization is provided. The input patch size is changed to 224x224 to match the dataset frame size, just for making the visualization a bit nicer.
 
@@ -263,7 +286,7 @@ of the ground truth minus the reconstructed image. For every RGB component we ap
 the formula "max(0, min(1, 8 x + 1/2))". Note that with this color palette a pixel with
 zero error is depicted as pure gray.
 
-![e7_images](resources/compression/e7-images.png "Experiment 7 test images")
+![e7_images](resources/compression/e7-images.png "Experiment 7: reconstructed images for a few test samples")
 
 A 6 bits quantization needed for increasing the compression ratio to 10.66 was introduced, which impacted the PSNR (going from 44.02 dB to 43.08 dB). Then the decoder was trained for removing that noise and went from 43.08 dB to 43.4 dB.
 The resulting images look sharp, in line with the high PSNR values.
