@@ -137,10 +137,10 @@ Training the model took 4 days on a Tesla P100, setting also a lower bound on ho
 
 ## Experiment 2: sparsity at 1/4
 
-In this second experiment we further squeeze the features tensor, going from 96 channels to
-only 48 for achieving a 25% dimensionality reduction to confirm the images can be further
-squeezed without serious damage. We define a serious damage as a PSNR for the test set
-below 32 dB.
+In this second experiment we further shrink the features tensor, going from 96 channels to
+only 48 for achieving a 25% dimensionality reduction. The purpose of the experiment is just
+to confirm the images can be further shriked without serious damage. We define a serious
+damage as a PSNR for the test set below 32 dB.
 
 Again no quantization is provided. The input patch size is changed to 224x224 to match the dataset frame size, just for making the visualization a bit nicer.
 
