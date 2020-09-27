@@ -182,7 +182,7 @@ On this third experiment we introduce 3 bits quantization of the features. This 
 |test_dataset_size | 500
 |num_epochs | **2500**
 
-## Results
+### Results
 
 The test PSNR improves about 0.2 dB as shown in the following figure.
 
@@ -192,7 +192,7 @@ A very interesting conclusion is that **the decoder can actually learn to undo s
 confirming our experiment hypothesis.
 
 
-### Experiment 4: sparsity at 1/8
+## Experiment 4: sparsity at 1/8
 
 At this point it becomes evident that if we want to achieve a compression ratio in the range of 1/10 to 1/20 for comparing with JPEG and JPEG 2000, it is unlikely that using a 1/4 sparsity is bringing us even nearly close, no matter what the PSNR the image codec is.
 
@@ -215,11 +215,11 @@ Notice in the following table the hyper parameter values in bold typography, whi
 |test_dataset_size | 500
 |num_epochs | **110000**
 
-## Results
+### Results
 
 The test PSNR is 40.1 dB, but could only achieve this result at the expense of training for 14 days on an Tesla P100 (with a approximated cost of 350 euros in Google Cloud Platform).
 
-### Experiment 5: 6 bits quantization
+## Experiment 5: 6 bits quantization
 
 We do the second stage of training the quantizing model, expecting to confirm once again that the training in two stages helps to reduce the amount of noise introduced by the quantization.
 
