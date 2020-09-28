@@ -194,11 +194,21 @@ confirming our experiment hypothesis.
 
 ## Experiment 4: sparsity at 1/8
 
-At this point it becomes evident that if we want to achieve a compression ratio in the range of 1/10 to 1/20 for comparing with JPEG and JPEG 2000, it is unlikely that using a 1/4 sparsity is bringing us even nearly close, no matter what the PSNR the image codec is.
+At this point it becomes evident that if we want to achieve a compression ratio
+in the range of 1/10 to 1/20 for comparing with JPEG and JPEG 2000, it is
+unlikely that using a 1/4 sparsity is bringing us even nearly close, no matter
+how high our reconstruction PSNR.
 
-Although we can certainly try to rely on quantization and entropic coding for bridging the compression ratio gap from 1/4 to 1/10, it seems a bit of a stretch to say the least. Achiving a sparsity of 1/8 on the autoencoder would be a better starting point for the quantization and entropy coding effort to bridge the gap with JPEG. 
+Although we can certainly try to rely on quantization and entropic coding for
+bridging the compression ratio gap from 1/4 to 1/10, it seems a bit of a
+stretch to say the least. Achieving a sparsity of 1/8 on the autoencoder would
+be a better starting point for the quantization and entropy coding effort to
+bridge the gap with JPEG.
 
-Hence, in this experiment we train a model that reduces dimensionality to 1/8, although but we do not yet perform  quantization. We do not introduce quantization yet because we learned in experiment 3 that it is possible to first train without quantization and then introduce the quantization on a second stage.
+Hence, in this experiment we train a model that reduces dimensionality to 1/8,
+although but we do not yet perform  quantization. We do not introduce quantization
+yet because we learned in experiment 3 that it is possible to first train without
+quantization and then introduce the quantization on a second stage.
 
 Notice in the following table the hyper parameter values in bold typography, which are the ones whose values changed from previous experiment.
 
