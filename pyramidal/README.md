@@ -6,7 +6,7 @@
 
 The figure below shows what a pyramidal autoencoder looks like:
 
-![picture](resources/pyramidal/pyramidal-autoencoder.png)
+![picture](resources/pyramidal-autoencoder.png)
 
 The encoder is made of several convolutional stages that progressively downsample the damaged (noise, holes, blurring, etc) input image size and produce a bottleneck of features that the decoder uses to reconstruct the undamaged ground truth image. The key point of the pyramidal architecture is the skip connections that flow from the encoder to the decoder after each intermediate stage to help the flow of features at different resolution levels:
 
@@ -22,27 +22,27 @@ Some results of these models are shown and commented below:
 
 ### Ground Truth
 
-![picture](resources/pyramidal/v1-gt.png)
+![picture](resources/v1-gt.png)
  
 ### Input Image
 
-![picture](resources/pyramidal/v1-i.png) 
+![picture](resources/v1-i.png) 
 
 ### Basic21 model
 
-![picture](resources/pyramidal/v1-basic21.png) 
+![picture](resources/v1-basic21.png) 
  
 This is a non-pyramidal shallow model. Pixel details are well captured but larger structures like the purple squares cannot be reconstructed because of the lack of enough receptive field. This model could work for restoring small noise but not this.
 
 ### Basic51 model
 
-![picture](resources/pyramidal/v1-basic51.png) 
+![picture](resources/v1-basic51.png) 
  
 This is a non-pyramidal deep model. Now we have an enough large receptive field to restore the purple boxes completely, but the bottleneck of features is so deep that we loss pixel level details
 
 ### Pyramidal51 model
 
-![picture](resources/pyramidal/v1-pyramidal51.png) 
+![picture](resources/v1-pyramidal51.png) 
 
 Finally, this is a pyramidal model. It has a large receptive field but also performs good reconstruction at the fine pixel level details. In short, it combines the benefits of Basic21 and Basic51 in a single model.
 
@@ -52,11 +52,11 @@ These results confirm our hypothesis about the benefits of using pyramidal archi
 
 But what would happen if we had more massive damages into the input images like these ones?
 
-![picture](resources/pyramidal/massive-damage-examples.png) 
+![picture](resources/massive-damage-examples.png) 
  
 In this case, we need more convolutional layers in our model for being able to learn more but, the more layers, the greater the vanishing gradient problem:
  
-![picture](resources/pyramidal/more-layers.png) 
+![picture](resources/more-layers.png) 
 
 So our new hypothesis for going further is:
 
@@ -66,7 +66,7 @@ So our new hypothesis for going further is:
 
 For increasing the number of layers, we have studied and implement ResNet and DenseNet techniques:
 
-![picture](resources/pyramidal/resnet-densenet.png) 
+![picture](resources/resnet-densenet.png) 
  
 For the final model we chose DenseNet style because of its advantages:
 
@@ -79,7 +79,7 @@ For the final model we chose DenseNet style because of its advantages:
 
 The Layer block has this structure:
 
-![picture](resources/pyramidal/layer.png) 
+![picture](resources/layer.png) 
  
 It is implemented in /pyramidal/blocks/densenet/layer.py
 
@@ -87,7 +87,7 @@ It is implemented in /pyramidal/blocks/densenet/layer.py
 
 The DenseBlock is made of Layers following this arrangement:
 
-![picture](resources/pyramidal/dense-block.png) 
+![picture](resources/dense-block.png) 
 
  
 Each layer produces k features, typically 16 or 24, that are concatenated following the patterns shown in the figure. This figure shows a DenseBlock of 4 layers but it can be extended in a similar way to 5, 7, 10 or whatever number of layers.
@@ -98,7 +98,7 @@ The DenseBlocks for different number of layers are implemented in /pyramidal/blo
 
 The down and up transitions are blocks that downsample (/2) and upsample (x2) the feature maps to progress from one level to the next one through the pyramidal model:
 
-![picture](resources/pyramidal/transitions.png) 
+![picture](resources/transitions.png) 
 
 We can implement these blocks in several ways. For example, the TD blocks can be implemented with average pools or max pools. The TU blocks can be implemented with transposed convolutions with stride=2 or with features upsamplings and convolutions.
 
@@ -108,7 +108,7 @@ Several methods are implemented in /pyramidal/blocks/densenet/down_X.py and up_X
 
 This is our most advanced model for the final pyramidal experiment:
 
-![picture](resources/pyramidal/final-model.png) 
+![picture](resources/final-model.png) 
  
 * Encoder to the left: DenseNet Blocks (DB) and Transition Downs (TB).
 * Decoder to right: DenseNet Blocks and Transition Ups (TU).
@@ -123,7 +123,7 @@ The final model is implemented in /pyramidal/autoencoders/densenet/pyramidal4571
 
 This figure summarizes our training strategy:
 
-![picture](resources/pyramidal/training-strategy.png)
+![picture](resources/training-strategy.png)
  
 * During training we apply some random transformations for Data Augmentation.
 * We normalize the images to float32 from -1 to 1. We think this approach will produce good non-linearities with the ReLUs inside the model.
@@ -150,11 +150,11 @@ This figure summarizes our training strategy:
 
 We use TensorBoard to show the progress of the loss function (training and validation). The loss is shown as PSNR because we are more used to it coming from classic image processing. All experiments are recorded with a different name based on date and time to keep track of all of them:
 
-![picture](resources/pyramidal/monitoring-loss.png)
+![picture](resources/monitoring-loss.png)
 
 We also use TensorBoard to save some images resulting from the training:
 
-![picture](resources/pyramidal/monitoring-images.png)
+![picture](resources/monitoring-images.png)
 
 * Some samples for each epoch from the output of the training with the validation set.
 * Some samples for each epoch from the output of the training with the training set. By comparing these with the ones from the validation set, we could check visually the impact of an eventual overfitting.
@@ -163,23 +163,23 @@ We also use TensorBoard to save some images resulting from the training:
 
 ## Results (1/4): Massive noise
  
-![picture](resources/pyramidal/results-noise.png)
+![picture](resources/results-noise.png)
 
 ## Results (2/4): Face Blocking
  
-![picture](resources/pyramidal/results-blocks.png)
+![picture](resources/results-blocks.png)
 
 To note: the dataset is biased towards caucassian and no sunglasses, and this is reflected in the output. Also, the model thinks that blonde and long hair equals woman.
 
 ## Results (3/4): Super Resolution (x8)
 
-![picture](resources/pyramidal/results-super-resolution.png)
+![picture](resources/results-super-resolution.png)
 
 Interesting comparison at the bottom between autoencoder and classical bilinear interpolation. Autoencoder can guess small details that otherwise would be impossible. Later we will explain a totally different approach with GANs.
 
 ## Results (4/4): Others
 
-![picture](resources/pyramidal/results-other.png)
+![picture](resources/results-other.png)
 
 The options are endless: just by training the autoencoder model with different data we get different applications.
 
