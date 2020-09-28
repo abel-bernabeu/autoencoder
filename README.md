@@ -310,7 +310,7 @@ zero error is depicted as pure gray.
 
 ![e7_images](resources/compression/e7-images.png "Experiment 7: reconstructed images for a few test samples")
 
-A 6 bits quantization needed for increasing the compression ratio to 10.66 was introduced, which impacted the PSNR (going from 44.02 dB to 43.08 dB). Then the decoder was trained for removing that noise and went from 43.08 dB to 43.4 dB.
+A 6 bits quantization needed for increasing the compression factor to 10.66 was introduced, which impacted the PSNR (going from 44.02 dB to 43.08 dB). Then the decoder was trained for removing that noise and went from 43.08 dB to 43.4 dB.
 The resulting images look sharp, in line with the high PSNR values.
 
 
@@ -318,7 +318,7 @@ The resulting images look sharp, in line with the high PSNR values.
 
 The training in two stages technique proposed in this technical report, in spite of its simplicity, is a valid strategy for dealing with quantization layers during training.
 
-The model from experiment 7 is our best choice so far (achieving a 10.6 compression ratio with a 43.4 dB PSNR).
+The model from experiment 7 is our best choice so far (achieving a 10.6 compression factor with a 43.4 dB PSNR).
 For seeing this result in perspective one needs to look at the PSNR for an equivalent
 compression ratio with standard compression methods like JPEG and JPEG 2000.
 
