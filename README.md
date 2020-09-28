@@ -197,7 +197,7 @@ confirming our experiment hypothesis.
 At this point it becomes evident that if we want to achieve a compression ratio
 in the range of 1/10 to 1/20 for comparing with JPEG and JPEG 2000, it is
 unlikely that using a 1/4 sparsity is bringing us even nearly close, no matter
-how high our reconstruction PSNR.
+how high our reconstruction PSNR is.
 
 Although we can certainly try to rely on quantization and entropic coding for
 bridging the compression ratio gap from 1/4 to 1/10, it seems a bit of a
