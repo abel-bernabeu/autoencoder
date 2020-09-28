@@ -460,6 +460,8 @@ This figure summarizes our training strategy:
     * pixelate.py
     * block.py
     * squares.py
+    * blur.py
+    * jpeg.py
 * common.py contains code that is common to all the experiments.
 * hparams.py contains hyper parameters that are common to all the experiments.
 * In /pyramidal/train/trainer.py there is the main training loop.
@@ -480,21 +482,27 @@ We also use TensorBoard to save some images resulting from the training:
 * Some samples from the input.
 * Some samples from the ground truth. By comparing these with the output of the training with the validation set we get a visual measure of the validation loss.
 
-## Results (1/3): Massive noise
+## Results (1/4): Massive noise
  
 ![picture](resources/pyramidal/results-noise.png)
 
-## Results (2/3): Face Blocking
+## Results (2/4): Face Blocking
  
 ![picture](resources/pyramidal/results-blocks.png)
 
 To note: the dataset is biased towards caucassian and no sunglasses, and this is reflected in the output. Also, the model thinks that blonde and long hair equals woman.
 
-## Results (3/3): Super Resolution (x8)
+## Results (3/4): Super Resolution (x8)
 
 ![picture](resources/pyramidal/results-super-resolution.png)
 
 Interesting comparison at the bottom between autoencoder and classical bilinear interpolation. Autoencoder can guess small details that otherwise would be impossible. Later we will explain a totally different approach with GANs.
+
+## Results (4/4): Others
+
+![picture](resources/pyramidal/results-other.png)
+
+The options are endless: just by training the autoencoder model with different data we get different applications.
 
 ## Conclusions
 
@@ -511,3 +519,12 @@ Interesting comparison at the bottom between autoencoder and classical bilinear 
 
     1. Tests run on Amazon AWS EC2 with Nvidia Tesla V100 16 GB (500 €)
     1. Prototyping on laptop with Nvidia GTX 1650 4 GB
+
+## Bibliography
+
+* [Residual blocks — Building blocks of ResNet](https://towardsdatascience.com/residual-blocks-building-blocks-of-resnet-fd90ca15d6ec)
+* [An Overview of ResNet and its Variants](https://towardsdatascience.com/an-overview-of-resnet-and-its-variants-5281e2f56035)
+* [Review: DenseNet — Dense Convolutional Network (Image Classification)](https://towardsdatascience.com/review-densenet-image-classification-b6631a8ef803)
+* [DenseNet](https://towardsdatascience.com/densenet-2810936aeebb)
+
+
