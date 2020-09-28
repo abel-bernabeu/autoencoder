@@ -227,7 +227,12 @@ Notice in the following table the hyper parameter values in bold typography, whi
 
 ### Results
 
-The test PSNR is 40.1 dB, but could only achieve this result at the expense of training for 14 days on an Tesla P100 (with a approximated cost of 350 euros in Google Cloud Platform).
+The test PSNR is 40.1 dB which still allows for sharp reconstructions. However, we could only achieve this result at
+the expense of training for 14 days on an Tesla P100  (with an approximated cost of 350 euros in Google Cloud Platform).
+The training cost is really going up as we push boundaries.
+
+Remember that in experiment 1 where we aimed at a 1/2 sparsity we could achieve a high PSNR of 43 dB in only 4 days of
+training. From now on we should start being mindful of the economic cost of the experiments.
 
 ## Experiment 5: 6 bits quantization
 
