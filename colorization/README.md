@@ -64,5 +64,5 @@ The approach 2 using transfer learning achieves visually and numerically a bette
 
 .-Accuracy approach 2: 0.8913 and uses 1,572,114 trainable params 
 ![Results_Colorization](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/Results_Colorization.png)
-The colorization of other kind of images is failing due to face biased dataset. This is happening using both approaches: 
+The colorization of other kind of images is failing due to human faces domain dataset. This is happening using both approaches: 
 ![Landscape Colorization](https://github.com/abel-bernabeu/autoencoder/blob/master/colorization/lanscape.jpg)
